@@ -2,6 +2,7 @@ package simpleWidget.widget;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,9 @@ import viewapi.view.ViewException;
 import viewapi.view.event.ViewContainerEventController;
 import viewapi.view.perspective.PerspectiveConstraint;
 import viewcore.controller.AbstractViewController;
+import viewswing.swing.DynamicTable;
+import viewswing.swing.table.DynamicTableColumn;
+import viewswing.swing.table.DynamicTableModel;
 
 /**
  * @author Mario Garcia
@@ -86,7 +90,18 @@ public class TestController extends AbstractViewController<ActionListener, Actio
 		Map<Object,ViewContainer> views = view.getApplication().getViewManager().getViews();
 		debugJustInCase("map_of_views:"+views.keySet());
 		if(actionCommand.equals("Certification")) {
-			ViewContainer tabContainer = new CertificationView(); 
+			List<Certification> 
+			memberList = Arrays.asList(
+					new Certification("Joe","0392jr"),
+					new Certification("Janet","323rr"),
+					new Certification("Blackham","3r23r"),
+					new Certification("Erikka","234f2"),
+					new Certification("Moira","23d23d"),
+					new Certification("Ulrich","23f23f")
+				);
+			
+			
+			ViewContainer tabContainer = new CertificationView(memberList); 
 			try {
 		
 				ViewContainer viewToRemove = views.get("CustomApplicationView");
